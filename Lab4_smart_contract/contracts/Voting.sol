@@ -50,6 +50,12 @@ contract Voting {
         );
         voters[voter].votes[proposal] = voters[voter].sharesNum;
     }
+
+    function checkRightToVote(address voter, uint proposal) public view
+        returns (uint voteCount_)
+    {
+        voteCount_ = voters[voter].votes[proposal];
+    }
     
     function vote(uint proposal, bool choice, uint votes) public {
         Voter storage sender = voters[msg.sender];
